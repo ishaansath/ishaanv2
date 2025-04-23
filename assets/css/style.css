@@ -1880,3 +1880,18 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+#portfolio-modal .modal-img-wrapper {
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#portfolio-modal .modal-img-wrapper img {
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  border-radius: 12px;
+}

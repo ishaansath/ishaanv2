@@ -157,3 +157,30 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+// Portfolio Image Modal Logic
+const portfolioModal = document.getElementById("portfolio-modal");
+const portfolioOverlay = document.getElementById("portfolio-overlay");
+const portfolioModalClose = document.getElementById("portfolio-modal-close");
+const portfolioModalImg = document.getElementById("portfolio-modal-img");
+
+// Target all project image wrappers
+document.querySelectorAll(".project-img").forEach(project => {
+  project.addEventListener("click", () => {
+    const img = project.querySelector("img");
+    portfolioModalImg.src = img.src;
+    portfolioModalImg.alt = img.alt;
+    portfolioModal.classList.add("active");
+    portfolioOverlay.classList.add("active");
+  });
+});
+
+// Close modal
+portfolioModalClose.addEventListener("click", () => {
+  portfolioModal.classList.remove("active");
+  portfolioOverlay.classList.remove("active");
+});
+
+portfolioOverlay.addEventListener("click", () => {
+  portfolioModal.classList.remove("active");
+  portfolioOverlay.classList.remove("active");
+});
