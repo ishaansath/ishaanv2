@@ -184,3 +184,24 @@ portfolioOverlay.addEventListener("click", () => {
   portfolioModal.classList.remove("active");
   portfolioOverlay.classList.remove("active");
 });
+
+// Send data
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzJNdNRX4kqfb9XdxSwsu9ty2ncJ51sDAefsgu583DAzMuUkxs8KMJqRwpJ-vylv6Q/exec';
+const googleForm = document.forms['submit-to-google-sheet'];
+const msg = document.getElementById("msg");
+
+googleForm.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(scriptURL, { method: 'POST', body: new FormData(googleForm) })
+    .then(response => {
+      msg.innerHTML = "Message sent successfully!";
+      setTimeout(() => msg.innerHTML = "", 1000);
+      googleForm.reset();
+      document.querySelector("[data-form-btn]").setAttribute("disabled", "");
+    })
+    .catch(error => {
+      msg.innerHTML = "Something went wrong!";
+      msg.style.color = "red";
+      console.error('Error!', error.message);
+    });
+});
